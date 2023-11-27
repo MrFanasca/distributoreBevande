@@ -4,23 +4,34 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class distributore {
-		
-	float moneta, credito=0, resto, costo;
+	
+	private float moneta, credito, resto, costo;
 	String nomeBevanda;
+	private boolean presente;
 	Scanner sc = new Scanner (System.in);
-	boolean presente;
 	
-	
-	/* Bevande disponibili nel distributore */
-	HashMap<String, Float> bevande =new HashMap<>() 
+	/* Bevande disponibili nel distributore*/
+	private HashMap<String, Float> bevande =new HashMap<>(); 
+	/*I metodo inserendo direttamente tuttel le variabili nel HashMap
 	{{
 			put("caffè", 1.0f);
 			put("decaffeinato",1.0f);
 			put("caffè macchiato",1.2f);
 			put("cappuccino",1.5f);
 			put("tè al limone",1.5f);
-	}};
-	
+	}};*/
+			
+	/* II metodo utilizzando il costruttore */
+	public distributore() 
+	{
+		bevande.put("caffè", 1.0f);
+		bevande.put("decaffeinato",1.0f);
+		bevande.put("caffè macchiato",1.2f);
+		bevande.put("cappuccino",1.5f);
+		bevande.put("tè al limone",1.5f);
+		credito=0;
+	}
+
 	/* Stampo tutte le bevande disponibili nella macchina */
 	public void visualizzaDisponibilità ()
 	{
@@ -68,6 +79,7 @@ public class distributore {
 	public void erogaBevanda()
 	{
 		resto=credito-costo;
-		System.out.println("Ritira la bevanda e il tuo resto di " + resto + " euro");
+		System.out.println("Ritira la bevanda e il tuo resto di " + String.format("%.2f", resto) + " euro");
 	}
+	
 }
