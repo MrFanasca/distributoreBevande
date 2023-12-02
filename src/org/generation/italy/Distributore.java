@@ -3,7 +3,7 @@ package org.generation.italy;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class distributore {
+public class Distributore {
 	
 	private float moneta, credito, resto, costo;
 	String nomeBevanda;
@@ -12,7 +12,7 @@ public class distributore {
 	
 	/* Bevande disponibili nel distributore*/
 	private HashMap<String, Float> bevande =new HashMap<>(); 
-	/*I metodo inserendo direttamente tuttel le variabili nel HashMap
+	/*I metodo inserendo direttamente tutte  le variabili nel HashMap
 	{{
 			put("caffè", 1.0f);
 			put("decaffeinato",1.0f);
@@ -22,7 +22,7 @@ public class distributore {
 	}};*/
 			
 	/* II metodo utilizzando il costruttore */
-	public distributore() 
+	public Distributore() 
 	{
 		bevande.put("caffè", 1.0f);
 		bevande.put("decaffeinato",1.0f);
