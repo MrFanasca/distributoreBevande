@@ -1,7 +1,8 @@
 package org.generation.italy;
 
 public class Bevanda {
-	/* Versione 2: aggiungere una classe Bevanda con i seguenti attributi
+	/* Versione 2
+	 * Aggiungere una classe Bevanda con i seguenti attributi
 	 * - codice(int)
 	 * - nome (String)
 	 * - prezzo (float)
@@ -42,5 +43,28 @@ public class Bevanda {
 			quantitàDisponibile+=quantità;
 	}
 	
+	// metodo getter che mi restituisce il codice della bevanda 
+	public Integer getCodice() 
+	{
+		return codice;
+	}
+
+	// metodo getter che mi restituisce la quantità disponibile della specifica bevanda 
+	public Integer getQuantitàDisponibile() 
+	{
+		return quantitàDisponibile;
+	}
+
+	// metodo getter che mi restituisce il nome della specifica bevanda 
+	public String getNome() 
+	{
+		return nome;
+	}
+
+	// metodo getter che mi restituisce il prezzo della specifica bevanda 
+	public Float getPrezzo() 
+	{
+		return prezzo;
+	}
 	
 }
