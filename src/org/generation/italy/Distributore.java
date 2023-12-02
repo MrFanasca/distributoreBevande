@@ -74,6 +74,16 @@ public class Distributore {
 	{
 		//resto=credito-costo;
 		System.out.println("Ritira la bevanda e il tuo resto di " + String.format("%.2f", resto) + " euro");
+		
+	}
+	
+	/* caricare una specifica bevanda*/
+	public void caricaBevanda(Integer codice, Integer quantità)
+	{
+		if (bevande.containsKey(codice))
+			bevande.get(codice).carica(quantità);
+		else
+			System.out.println("Codice non valido");
 	}
 	
 }

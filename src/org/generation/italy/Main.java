@@ -29,10 +29,11 @@ public class Main {
 		Ogni volta che si visualizza il menu bisogna visualizzare l'elenco delle bevande disponibili (per ogni bevanda visualizzare: codice, nome, prezzo).
 		La voce 3 (carica bevanda) è accessibile solo inserendo la password "12345"*/
 		
-		Distributore bevande = new Distributore();
+		Distributore d = new Distributore();
 		Scanner sc = new Scanner(System.in);
 		
-		String risposta;
+		int codice, quantità, errori=0;
+		String risposta, password;
 		Float moneta, credito=0f;
 		boolean uscita=false;
 
@@ -47,9 +48,9 @@ public class Main {
 			case "1":	// Inserimento delle monete
 				do
 				{
-					System.out.println("Monete accettate: 0.10€ 0.20€ 0.5€ 1€ 2€\nInserisci la moneta");
+					System.out.println("\nMonete accettate: 0.10€ 0.20€ 0.5€ 1€ 2€\nInserisci la moneta");
 					moneta=Float.parseFloat(sc.nextLine());
-					bevande.inserisciMoneta(moneta);
+					d.inserisciMoneta(moneta);
 					System.out.println("Vuoi inserire altre monete? (s/n)");
 					risposta=sc.nextLine();
 				}	while (risposta.equalsIgnoreCase("s"));
@@ -58,7 +59,25 @@ public class Main {
 			case "2":	// Selezionare una bevanda
 				break;
 				
-			case "3":	// Cariicare una bevanda 
+			case "3":	// Caricare una bevanda 
+				System.out.println("\nInserire la password");
+				password=sc.nextLine();
+				while (!password.equals("12345") && errori<3)
+				{
+					errori+=1;
+					System.out.println("Password errata\\nInserire la password");
+					password=sc.nextLine();
+				}
+				if (errori<3)
+				{
+					errori=0;
+					System.out.println("\nInserire il codice della bevanda da caricare");
+					codice=Integer.parseInt(sc.nextLine());
+					System.out.println("Inserire la quantità da caricare");
+					quantità=Integer.parseInt(sc.nextLine());
+					d.caricaBevanda(codice, quantità);
+				}
+				
 				break;
 				
 			case "4":	// Uscire
