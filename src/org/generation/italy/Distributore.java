@@ -44,21 +44,21 @@ public class Distributore {
 	public void sceltaBevanda (Integer codice)
 	{
 		presente=false;
-		do
+		if (bevande.containsKey(codice))
 		{
-			System.out.println("\n\nSeleziona una bevanda: ");
-			// nomeBevanda=sc.nextLine();
-			if (bevande.containsKey(codice))
+			presente=true;
+			if (bevande.get(codice).getQuantitàDisponibile()>0)
 			{
-				System.out.println("L'importo da pagare è di " + bevande.get(codice).getPrezzo() + " euro");
-				presente=true;
+			System.out.println("L'importo da pagare è di " + bevande.get(codice).getPrezzo() + " euro");
 			}
-			else 
-				System.out.println("Bevanda non è disponibile");
-		}	while(!presente);
-		
+			else
+				System.out.println("Prodotto non disponibile");
+		}
+		else 
+			System.out.println("Bevanda non è disponibile");
 	}
-	 
+
+
 	/* inserimento delle monete valide e reminder del credito*/
 	public void inserisciMoneta(Float moneta)
 	{
@@ -70,11 +70,11 @@ public class Distributore {
 	}
 	
 	/* calcolo del resto ed erogazione del prodotto */
-	public void erogaBevanda()
+	public void erogaBevanda(Integer codice)
 	{
-		//resto=credito-costo;
+		resto=credito-bevande.get(codice).getPrezzo();
 		System.out.println("Ritira la bevanda e il tuo resto di " + String.format("%.2f", resto) + " euro");
-		
+		bevande.get(codice).eroga();	
 	}
 	
 	/* caricare una specifica bevanda*/
@@ -86,4 +86,9 @@ public class Distributore {
 			System.out.println("Codice non valido");
 	}
 	
+	 
+	public boolean isPresente() 
+	{
+		return presente;
+	}
 }

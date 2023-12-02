@@ -34,7 +34,7 @@ public class Main {
 		
 		int codice, quantità, errori=0;
 		String risposta, password;
-		Float moneta, credito=0f;
+		Float moneta;
 		boolean uscita=false;
 
 		do
@@ -57,6 +57,15 @@ public class Main {
 				break;
 				
 			case "2":	// Selezionare una bevanda
+				System.out.println("\nQueste sono le bevande disponibili");
+				d.visualizzaDisponibilità();
+				do
+				{
+					System.out.println("Inserisci il codice della bevanda");
+					codice=Integer.parseInt(sc.nextLine());
+					d.sceltaBevanda(codice);
+				}	while (d.isPresente()==false);
+				d.erogaBevanda(codice);
 				break;
 				
 			case "3":	// Caricare una bevanda 
@@ -65,7 +74,7 @@ public class Main {
 				while (!password.equals("12345") && errori<3)
 				{
 					errori+=1;
-					System.out.println("Password errata\\nInserire la password");
+					System.out.println("Password errata\nInserire la password");
 					password=sc.nextLine();
 				}
 				if (errori<3)
@@ -77,7 +86,8 @@ public class Main {
 					quantità=Integer.parseInt(sc.nextLine());
 					d.caricaBevanda(codice, quantità);
 				}
-				
+				else if (errori==3)
+					errori=0;
 				break;
 				
 			case "4":	// Uscire
